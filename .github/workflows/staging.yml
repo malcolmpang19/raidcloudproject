@@ -79,5 +79,3 @@ jobs:
           name: lighthouse-report
           path: ./lighthouse-report.html
           
-  update-repo:
-    runs-on: self-hosted
