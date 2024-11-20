@@ -1,0 +1,83 @@
+name: CI/CD Pipeline for Main Branch
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  ci-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Check out the repository
+        uses: actions/checkout@v3
+      
+      # Step 2: Run Super Linter
+      #- name: Run Super Linter
+      #  uses: github/super-linter@v5
+      #  continue-on-error: true
+      #  env:
+      #    DEFAULT_BRANCH: main
+      #    VALIDATE_ALL_CODEBASE: true
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+ # Step 3: Run Basic Tests
+      - name: Run Smoke Tests
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+          curl -I http://localhost:8080 || exit 1
+
+      # Step 4: Perform Security Scan
+      - name: Run Security Scan
+        run: |
+          npm install -g retire
+          retire --path . --outputformat text || true
+
+      - name: Run Smoke Tests
+        run: |
+          python3 -m http.server 8080 &
+          sleep 2
+          curl -I http://localhost:8080 || exit 1
+
+      # Step 4: Perform Security Scan
+      - name: Run Security Scan
+        run: |
+          npm install -g retire
+          retire --path . --outputformat text || true
+
+      # Step 5: Performance Benchmarking with Lighthouse
+      - name: Run Lighthouse Performance Benchmark
+        run: |
+          # Install necessary Chrome dependencies
+          sudo apt-get update
+          sudo apt-get install -y wget curl unzip
+          sudo apt-get install -y libnss3 libgconf-2-4 libgdk-pixbuf2.0-0 libatk1.0-0 \
+            libatk-bridge2.0-0 libx11-xcb1 libxcomposite1 libxrandr2 libgbm1 libasound2 \
+            libappindicator3-1 libxtst6 libxss1 libnss3-dev libnspr4-dev
+
+          # Install Node.js and Lighthouse
+          sudo apt-get install -y nodejs npm
+          npm install -g lighthouse
+
+          # Run Python server in the background
+          python3 -m http.server 8080 &
+          sleep 5 # Ensure server starts before Lighthouse runs
+
+          # Run Lighthouse on the local server with the necessary Chrome flags for headless mode
+          lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html --only-categories=performance --chrome-flags="--headless --no-sandbox --disable-gpu --disable-software-rasterizer"
+
+          # Optionally, check Lighthouse report
+          cat ./lighthouse-report.html
+
+      # Step 6: Upload Lighthouse Report as Artifact
+      - name: Upload Lighthouse Performance Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-report
+          path: ./lighthouse-report.html
+          
+  update-repo:
+    runs-on: self-hosted
