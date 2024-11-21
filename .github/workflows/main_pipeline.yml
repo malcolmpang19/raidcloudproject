@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-repo:
-    runs-on: self-hosted[raidcloudweb]
+    runs-on: self-hosted[Linux, X64, raidcloudweb]
 
     steps:
       # Step 1: Check out the repository
