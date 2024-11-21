@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-repo:
-    runs-on: self-hosted[Linux, X64, raidcloudweb]
+    runs-on: self-hosted
 
     steps:
       # Step 1: Check out the repository
@@ -69,7 +69,7 @@ jobs:
       # Step 8: Run Basic Tests
       - name: Verify External URL
         run: |
-          curl -I http://18.142.225.98/raidcloudproject/web/ || exit 1
+          curl -I http://13.213.46.0/raidcloudproject/web/ || exit 1
 
       # Step 9: Perform Security Scan
       - name: Run Security Scan
@@ -90,7 +90,7 @@ jobs:
           sudo apt-get install -y nodejs npm
           npm install -g lighthouse
           # Run Lighthouse on the external URL
-          lighthouse http://18.142.225.98/raidcloudproject/web/ \
+          lighthouse http://13.213.46.0/raidcloudproject/web/ \
             --output html \
             --output-path ./lighthouse-report.html \
             --only-categories=performance \
