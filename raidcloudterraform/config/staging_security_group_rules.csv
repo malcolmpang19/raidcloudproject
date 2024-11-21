@@ -1,0 +1,4 @@
+type,from_port,to_port,protocol,cidr_block
+ingress,22,22,tcp,220.255.137.67/32
+ingress,80,80,tcp,0.0.0.0/0
+egress,0,0,-1,0.0.0.0/0
