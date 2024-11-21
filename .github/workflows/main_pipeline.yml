@@ -14,6 +14,20 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v3
 
+      # Step 8: Verify if .git directory exists
+      - name: Check if .git directory exists
+        run: |
+          if [ -d "/var/www/html/raidcloudproject/web/.git" ]; then
+            echo ".git directory exists."
+          else
+            echo ".git directory does not exist. Cloning the repository."
+            cd /var/www/html/raidcloudproject/web
+            git init
+            git remote add origin https://github.com/malcolmpang19/raidcloudproject.git # Replace with your repo URL
+            git fetch origin
+            git checkout main
+          fi
+
       # Step 2: Set correct permissions for the repository on the server
       - name: Set correct permissions for the repository
         run: |
