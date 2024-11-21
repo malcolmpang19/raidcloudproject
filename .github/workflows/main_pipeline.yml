@@ -1,4 +1,4 @@
-name: CI/CD Pipeline for Main Branch
+name: CI/CD Pipeline for Main Branch (test)
 
 on:
   push:
