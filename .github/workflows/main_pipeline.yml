@@ -17,13 +17,13 @@ jobs:
       # Step 2: Verify if .git directory exists
       - name: Check if .git directory exists
         run: |
-          if [ -d "/var/www/html/raidcloudproject/.git" ]; then
+          if [ -d "/var/www/html/raidcloudproject/web/.git" ]; then
             echo ".git directory exists."
           else
             echo ".git directory does not exist. Cloning the repository."
             cd /var/www/html/raidcloudproject
             git init
-            git remote add origin https://github.com/malcolmpang19/raidcloudproject.git # Replace with your repo URL
+            git remote add origin https://github.com/malcolmpang19/raidcloudproject/web.git # Replace with your repo URL
             git fetch origin
             git checkout main
           fi
@@ -31,19 +31,19 @@ jobs:
       # Step 3: Set correct permissions for the repository on the server
       - name: Set correct permissions for the repository
         run: |
-          sudo chown -R $(whoami):$(whoami) /var/www/html/raidcloudproject
-          sudo chmod -R u+rw /var/www/html/raidcloudproject/
+          sudo chown -R $(whoami):$(whoami) /var/www/html/raidcloudproject/web
+          sudo chmod -R u+rw /var/www/html/raidcloudproject/web
 
       # Step 4: Ensure permissions on the .git directory
       - name: Set permissions for .git directory
         run: |
-          sudo chown -R $(whoami):$(whoami) /var/www/html/raidcloudproject/.git
-          sudo chmod -R u+rw /var/www/html/raidcloudproject/.git
+          sudo chown -R $(whoami):$(whoami) /var/www/html/raidcloudproject/web/.git
+          sudo chmod -R u+rw /var/www/html/raidcloudproject/web/.git
 
       # Step 5: Push updates to the RHEL server repository
       - name: Push updates to the RHEL server
         run: |
-          cd /var/www/html/raidcloudproject/
+          cd /var/www/html/raidcloudproject/web/
           git fetch origin main
           git reset --hard origin/main
           echo "Repository updated on the server."
