@@ -1,4 +1,4 @@
-<h1>SES Cloud Engineering homework</h1>
+<h1>Malcolm's Cloud Engineering homework</h1>
 
 <h2>Module 1</h2>
 
