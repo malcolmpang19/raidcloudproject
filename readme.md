@@ -27,4 +27,4 @@ where <x> is a counter value obtained from Redis.
 
 
 <h2>Module 4 Solution Architecting</h2>
-- The architecture diagram and cost estimation file is in Module4SolutionArchitecting
+- The architecture diagram and cost estimation file is in "Module4SolutionArchitecting" folder.
