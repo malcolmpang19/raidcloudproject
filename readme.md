@@ -1,6 +1,6 @@
 <h1>Malcolm's Cloud Engineering homework</h1>
 
-<h2>Module 1</h2>
+<h2>Module 1 Deployment</h2>
 
 - The website is hosted on AWS.
 - "web" folders is the code for the web.
