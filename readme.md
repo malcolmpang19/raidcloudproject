@@ -3,16 +3,16 @@
 <h2>Module 1 Deployment</h2>
 
 - The website is hosted on AWS.
-- "web" folders is the code for the web.
+- "web" folder is the code for the web.This folder is in "/var/www/html/raidcloudproject/" in the AWS RHEl server where the website is deployed.
 - "raidcloudterraform" folder contains the terraform scripts for provisioning resources for module 1.
-- "module1architecturediagram.jpg" is the architecture diagram for module 1
+- "module1architecturediagram.jpg" is the architecture diagram for module 1.
 - To access the hosted website, go to this url "http://13.213.46.0/raidcloudproject/web/"
 
   
 <h2>Module 2 Continuous Deployment</h2>
 
-- ".github/workflows" folder is the ci/cd pipeline for module 2 using github actions.
-- Commit the code to main branch and it will update the website
+- ".github/workflows" folder is the ci/cd pipeline for module 2 using Github Actions.
+- Commit the code to main branch and it will update the website.
 - The pipeline includes automated testing, linting, security scans, and performance benchmarking as well.
 
 
