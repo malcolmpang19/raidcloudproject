@@ -4,7 +4,7 @@
 
 - The website is hosted on AWS.
 - "web" folders is the code for the web.
-- "raidcloudterraform" contains the terraform scripts for provisioning resources for module 1.
+- "raidcloudterraform" folder contains the terraform scripts for provisioning resources for module 1.
 - "module1architecturediagram" is the architecture diagram for module 1
 
   
