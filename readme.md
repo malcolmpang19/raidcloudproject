@@ -5,7 +5,7 @@
 - The website is hosted on AWS.
 - "web" folders is the code for the web.
 - "raidcloudterraform" folder contains the terraform scripts for provisioning resources for module 1.
-- "module1architecturediagram" is the architecture diagram for module 1
+- "module1architecturediagram.jpg" is the architecture diagram for module 1
 - To access the hosted website, go to this url "http://13.213.46.0/raidcloudproject/web/"
 
   
