@@ -1,17 +1,29 @@
 <h1>SES Cloud Engineering homework</h1>
 
-<h2>Task 1</h2>
+<h2>Module 1</h2>
 
-Given repository, your task is to deploy this HTML template using any onto any three major cloud platforms, namely, Azure, Amazon Web Services (AWS) and Google Cloud Platform (GCP). There are no restrictions on the cloud services that you have to use to achieve the goal.
+- The website is hosted on AWS.
+- "web" folders is the code for the web.
+- "raidcloudterraform" contains the terraform scripts for provisioning resources for module 1.
+- "module1architecturediagram" is the architecture diagram for module 1
 
-<h2>How to submit</h2>
+  
+<h2>Module 2 Continuous Deployment</h2>
 
-You are to create a repository using your Github account and create a new <b>public</b> repository. Please share the link of the repository upon making booking of technical interview.
+- ".github/workflows" folder is the ci/cd pipeline for module 2 using github actions.
+- Commit the code to main branch and it will update the website
+- The pipeline includes automated testing, linting, security scans, and performance benchmarking as well.
 
-<h2>What to submit</h2>
 
-For Task 1 in your public repository. It must contain
+<h2>Module 3 Containers</h2>
 
-1. URL to access your deployed website for module 1
-2. Architecture diagram for module 1
+-"visitcount" folder contains the application with a webpage that displays the message "You are the <x>th visitor,"
+where <x> is a counter value obtained from Redis.
+- cd to the "visitcount" folder in terminal and run "docker-compose up --build" to start up the container.
+- Open your browser and navigate to http://localhost:5000
+- Use "docker-compose down" in terminal to stop the application.
+- Use "docker system prune -f" in terminal to clean up unused Docker resources.
 
+
+<h2>Module 4 Solution Architecting</h2>
+- The architecture diagram and cost estimation file is in Module4SolutionArchitecting
